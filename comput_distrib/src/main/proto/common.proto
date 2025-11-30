@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_package = "com.github.JoaoPem.computacaodistribuida.grpc";
+option java_multiple_files = true;
+
+message EmptyRequest {}
+
+message Playlist {
+  int64 id = 1;
+  string name = 2;
+  string userAccountName = 3;
+  repeated string musicNameList = 4;
+}
+
+message PlaylistListResponse {
+  repeated Playlist playlists = 1;
+}

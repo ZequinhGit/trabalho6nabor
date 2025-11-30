@@ -1,0 +1,8 @@
+type Query {
+    allUsers: [UserAccount!]!
+    userPlaylists(userId: ID!): [Playlist!]!
+    allMusics: [Music!]!
+    playlistsByMusic(musicId: ID!): [Playlist!]!
+    allPlaylists: [Playlist!]!
+    musicsByPlaylist(playlistId: ID!): [Music!]!
+}

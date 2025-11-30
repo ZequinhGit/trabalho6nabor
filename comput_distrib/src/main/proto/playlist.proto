@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.github.JoaoPem.computacaodistribuida.grpc";
+option java_outer_classname = "PlaylistProto";
+
+import "common.proto";
+import "music.proto";
+
+service PlaylistService {
+  rpc ListAllPlaylists (EmptyRequest) returns (PlaylistListResponse);
+  rpc ListMusicsByPlaylist (PlaylistIdRequest) returns (MusicListResponse);
+}
+
+message PlaylistIdRequest {
+  int64 playlistId = 1;
+}

@@ -1,0 +1,21 @@
+# --- PYTHON ---
+__pycache__/
+*.py[cod]
+venv/
+.env
+.pytest_cache/
+
+# --- JAVA ---
+target/
+*.class
+
+# --- IDEs (VS Code, IntelliJ) ---
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# --- OS (Windows/Mac) ---
+.DS_Store
+Thumbs.db

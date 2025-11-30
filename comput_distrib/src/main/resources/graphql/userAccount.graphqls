@@ -1,0 +1,5 @@
+type UserAccount {
+    id: ID!
+    name: String!
+    playlists: [Playlist!]!
+}

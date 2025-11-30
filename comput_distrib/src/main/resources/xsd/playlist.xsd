@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://example.com/playlists/soap"
+           xmlns:tns="http://example.com/playlists/soap"
+           elementFormDefault="qualified">
+
+    <!-- LISTAR TODAS AS PLAYLISTS -->
+    <xs:element name="GetAllPlaylistsRequest">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:element name="GetAllPlaylistsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="playlists" type="tns:Playlist" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- LISTAR MÚSICAS POR PLAYLIST -->
+    <xs:element name="GetMusicsByPlaylistRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="playlistId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetMusicsByPlaylistResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="musics" type="tns:Music" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- DTOs -->
+    <xs:complexType name="Playlist">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="userAccountName" type="xs:string"/>
+            <xs:element name="musics" type="tns:Music" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Music">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="artist" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

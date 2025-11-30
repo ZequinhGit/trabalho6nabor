@@ -1,0 +1,6 @@
+type Playlist {
+    id: ID!
+    name: String!
+    userAccountName: String!
+    musicNameList: [String!]!
+}

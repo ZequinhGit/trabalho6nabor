@@ -1,0 +1,106 @@
+syntax = "proto3";
+
+package streaming;
+
+service StreamingService {
+  // --- USUÁRIOS ---
+  rpc CriarUsuario (UsuarioRequest) returns (UsuarioResponse) {}
+  rpc ListarUsuarios (Empty) returns (ListaUsuarios) {}
+  rpc AtualizarUsuario (UpdateUsuarioRequest) returns (UsuarioResponse) {}
+  rpc DeletarUsuario (IdRequest) returns (StatusResponse) {}
+  rpc ListarPlaylistsDoUsuario (IdRequest) returns (ListaPlaylists) {}
+
+  // --- MÚSICAS ---
+  rpc CriarMusica (MusicaRequest) returns (MusicaResponse) {}
+  rpc ListarMusicas (Empty) returns (ListaMusicas) {}
+  rpc AtualizarMusica (UpdateMusicaRequest) returns (MusicaResponse) {}
+  rpc DeletarMusica (IdRequest) returns (StatusResponse) {}
+  rpc ListarPlaylistsDaMusica (IdRequest) returns (ListaPlaylists) {} // PDF Pag 6
+
+  // --- PLAYLISTS ---
+  rpc CriarPlaylist (PlaylistRequest) returns (PlaylistResponse) {}
+  rpc AtualizarPlaylist (UpdatePlaylistRequest) returns (PlaylistResponse) {}
+  rpc DeletarPlaylist (IdRequest) returns (StatusResponse) {}
+  rpc AddMusicaPlaylist (AddMusicaRequest) returns (StatusResponse) {}
+  rpc ListarMusicasDaPlaylist (IdRequest) returns (ListaMusicas) {}
+}
+
+// --- MENSAGENS AUXILIARES ---
+message Empty {}
+
+message IdRequest {
+  int32 id = 1;
+}
+
+message StatusResponse {
+  string mensagem = 1;
+  bool sucesso = 2;
+}
+
+// --- MENSAGENS DE DADOS ---
+message UsuarioRequest {
+  string nome = 1;
+  int32 idade = 2;
+}
+
+message UpdateUsuarioRequest {
+  int32 id = 1;
+  string nome = 2;
+  int32 idade = 3;
+}
+
+message UsuarioResponse {
+  int32 id = 1;
+  string nome = 2;
+  int32 idade = 3;
+}
+
+message ListaUsuarios {
+  repeated UsuarioResponse usuarios = 1;
+}
+
+message MusicaRequest {
+  string titulo = 1;
+  string artista = 2;
+}
+
+message UpdateMusicaRequest {
+  int32 id = 1;
+  string titulo = 2;
+  string artista = 3;
+}
+
+message MusicaResponse {
+  int32 id = 1;
+  string titulo = 2;
+  string artista = 3;
+}
+
+message ListaMusicas {
+  repeated MusicaResponse musicas = 1;
+}
+
+message PlaylistRequest {
+  string nome = 1;
+  int32 id_usuario = 2;
+}
+
+message UpdatePlaylistRequest {
+  int32 id = 1;
+  string nome = 2;
+}
+
+message PlaylistResponse {
+  int32 id = 1;
+  string nome = 2;
+  int32 dono_id = 3;
+}
+
+message ListaPlaylists {
+  repeated PlaylistResponse playlists = 1;
+}
+
+message AddMusicaRequest {
+  int32 id_playlist = 1;
+  int32 id_musica = 2;
+}
