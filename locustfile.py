@@ -1,11 +1,5 @@
 from locust import HttpUser, task, constant
 
-# ==============================================================================
-# 1. CONFIGURAÇÃO DOS PAYLOADS (O QUE VAMOS PEDIR)
-# ==============================================================================
-
-# --- GRAPHQL ---
-# Python (Campos em Português)
 gql_py_full = {
     "query": """
     {
@@ -16,7 +10,6 @@ gql_py_full = {
     """
 }
 
-# Java (Campos em Inglês)
 gql_jv_full = {
     "query": """
     {
